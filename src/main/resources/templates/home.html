@@ -17,7 +17,7 @@
 .map #centerRohAddr {
     display:block;
     margin-top:2px;
-    font-weight: normal;
+    font-weight: normal;s
 }
 
 .map #centerDongAddr {
@@ -100,7 +100,7 @@
       transform: translateX(-50%) translateY(-50%);
     }
 </style>
-    <!--modal css 끝!-->
+<!--modal css 끝!-->
 
 
 
@@ -201,8 +201,92 @@
     <!--homepage content-->
     <div id="layoutSidenav_content">
 
-        <main>
-            <!--map 구현!-->
+<main>
+<!--modal 구현-->
+            <div class="modal">
+                <div class="modal_body">
+                    <!--modal header-->
+                    <h5 class="modal-header " style="font-weight:bold">음식게시판</h5>
+                    <!--modal content-->
+                    <form>
+                        <form class="form-inline">
+                            <label class="my-1 mr-2" for="inlineFormCustomSelectPref">음식유형</label>
+                            <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                                <option selected>음식유형을 선택해주세요!</option>
+                                <option value="1">한식</option>
+                                <option value="2">중식</option>
+                                <option value="3">일식</option>
+                                <option value="4">양식</option>
+                                <option value="5">카페</option>
+                                <option value="6">디저트</option>
+                                <option value="7">야식</option>
+                            </select>
+                        </form>
+                        <div class="form-row">
+                            <div class="col-md-15 mb-4">
+                                <label style="font-weight:bold" for="validationDefault01">가게이름</label>
+                                <input type="text" class="form-control" id="validationDefault01" placeholder="가게이름을 입력해주세요."  required>
+                            </div>
+                            <div class="col-md-15 mb-4">
+                                <label style="font-weight:bold" for="validationDefault02">메뉴이름</label>
+                                <input type="text" class="form-control" id="validationDefault02" placeholder="메뉴이름을 입력해주세요."  required>
+                            </div>
+                            <div class="col-md-15 mb-4">
+                                <label style="font-weight:bold" for="validationDefault03">현재금액</label>
+                                <input type="text" class="form-control" id="validationDefault03" placeholder="현재금액을 입력해주세요."  required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-15 mb-4">
+                                <label style="font-weight:bold" for="validationDefault04">최소주문금액</label>
+                                <input type="text" class="form-control" id="validationDefault04" placeholder="최소주문금액을 입력해주세요." required>
+                            </div>
+                            <div class="col-md-15 mb-4">
+                                <label style="font-weight:bold" for="validationDefault05">배달료</label>
+                                <input type="text" class="form-control" id="validationDefault05" placeholder="배달료을 입력해주세요." required>
+                            </div>
+                        </div>
+                        <div class="form-group mb-2">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
+                                <label class="form-check-label" for="invalidCheck2">
+                                    Agree to terms and conditions
+                                </label>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" type="submit">채팅하기</button>
+                    </form>
+                </div>
+            </div>
+
+            <script>
+          const body = document.querySelector('body');
+          const modal = document.querySelector('.modal');
+          const btnOpenPopup = document.querySelector('.btn-open-popup');
+
+          btnOpenPopup.addEventListener('click', () => {
+            modal.classList.toggle('show');
+
+            if (modal.classList.contains('show')) {
+              body.style.overflow = 'hidden';
+            }
+          });
+
+          modal.addEventListener('click', (event) => {
+            if (event.target === modal) {
+              modal.classList.toggle('show');
+
+              if (!modal.classList.contains('show')) {
+                body.style.overflow = 'auto';
+              }
+            }
+          });
+
+    </script>
+<!--modal 구현 끝!-->
+
+
+<!--map 구현!-->
             <div class="map_wrap">
                 <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
                 <ul id="category">
@@ -381,6 +465,12 @@ function displayPlaceInfo (place) {
     contentNode.innerHTML = content;
     placeOverlay.setPosition(new kakao.maps.LatLng(place.y, place.x));
     placeOverlay.setMap(map);
+
+            modal.classList.toggle('show');
+
+            if (modal.classList.contains('show')) {
+              body.style.overflow = 'hidden';
+            }
 }
 
 
@@ -426,92 +516,23 @@ function changeCategoryClass(el) {
         el.className = 'on';
     }
 }
+
+<!--컨트롤 구현-->
+// 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
+var mapTypeControl = new kakao.maps.MapTypeControl();
+
+// 지도에 컨트롤을 추가해야 지도위에 표시됩니다
+// kakao.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
+map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+
+// 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
+var zoomControl = new kakao.maps.ZoomControl();
+map.addControl(zoomControl, kakao.maps.ControlPosition.BOTTOMRIGHT);
+
+<!--컨트롤 구현 끝!-->
 </script>
 <!--map 구현 끝!-->
-
-            <!--modal 구현-->
-            <div class="modal">
-                <div class="modal_body">
-                    <!--modal header-->
-                    <h5 class="modal-header " style="font-weight:bold">음식게시판</h5>
-                    <!--modal content-->
-                    <form>
-                        <form class="form-inline">
-                         <label class="my-1 mr-2" for="inlineFormCustomSelectPref">음식유형</label>
-                                <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-                                    <option selected>음식유형을 선택해주세요!</option>
-                                    <option value="1">한식</option>
-                                    <option value="2">중식</option>
-                                    <option value="3">일식</option>
-                                    <option value="4">양식</option>
-                                    <option value="5">카페</option>
-                                    <option value="6">디저트</option>
-                                    <option value="7">야식</option>
-                                </select>
-                        </form>
-                        <div class="form-row">
-                            <div class="col-md-15 mb-4">
-                                <label style="font-weight:bold" for="validationDefault01">가게이름</label>
-                                <input type="text" class="form-control" id="validationDefault01" placeholder="가게이름을 입력해주세요."  required>
-                            </div>
-                            <div class="col-md-15 mb-4">
-                                <label style="font-weight:bold" for="validationDefault02">메뉴이름</label>
-                                <input type="text" class="form-control" id="validationDefault02" placeholder="메뉴이름을 입력해주세요."  required>
-                            </div>
-                            <div class="col-md-15 mb-4">
-                                <label style="font-weight:bold" for="validationDefault03">현재금액</label>
-                                <input type="text" class="form-control" id="validationDefault03" placeholder="현재금액을 입력해주세요."  required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="col-md-15 mb-4">
-                                <label style="font-weight:bold" for="validationDefault04">최소주문금액</label>
-                                <input type="text" class="form-control" id="validationDefault04" placeholder="최소주문금액을 입력해주세요." required>
-                            </div>
-                            <div class="col-md-15 mb-4">
-                                <label style="font-weight:bold" for="validationDefault05">배달료</label>
-                                <input type="text" class="form-control" id="validationDefault05" placeholder="배달료을 입력해주세요." required>
-                            </div>
-                        </div>
-                        <div class="form-group mb-2">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
-                                <label class="form-check-label" for="invalidCheck2">
-                                    Agree to terms and conditions
-                                </label>
-                            </div>
-                        </div>
-                        <button class="btn btn-primary" type="submit">Submit form</button>
-                    </form>
-                </div>
-            </div>
-            <button class="btn-open-popup">Modal 띄우기</button>
-
-            <script>
-          const body = document.querySelector('body');
-          const modal = document.querySelector('.modal');
-          const btnOpenPopup = document.querySelector('.btn-open-popup');
-
-          btnOpenPopup.addEventListener('click', () => {
-            modal.classList.toggle('show');
-
-            if (modal.classList.contains('show')) {
-              body.style.overflow = 'hidden';
-            }
-          });
-
-          modal.addEventListener('click', (event) => {
-            if (event.target === modal) {
-              modal.classList.toggle('show');
-
-              if (!modal.classList.contains('show')) {
-                body.style.overflow = 'auto';
-              }
-            }
-          });
-        </script>
-            <!--modal 구현 끝!-->
-        </main>
+</main>
 
         <!--homepage footer-->
         <footer class="py-4 bg-light mt-auto">
