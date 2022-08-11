@@ -77,19 +77,6 @@
         background-color: rgba(0, 0, 0, 0.4);
       }
 
-      .modal {
-      position: absolute;
-      top: 0;
-      left: 0;
-
-      width: 100%;
-      height: 100%;
-
-      display: none;
-
-      background-color: rgba(0, 0, 0, 0.4);
-    }
-
     .modal.show {
       display: block;
     }
@@ -104,8 +91,6 @@
       height: 600px;
 
       padding: 40px;
-
-      text-align: center;
 
       background-color: rgb(255, 255, 255);
       border-radius: 10px;
@@ -122,7 +107,7 @@
 <body class="sb-nav-fixed">
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
     <!-- Navbar Brand-->
-    <a class="navbar-brand ps-3" href="index.html">Start Bootstrap</a>
+    <a class="navbar-brand ps-3" href="/index.html">Start Bootstrap</a>
     <!-- Sidebar Toggle-->
     <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
     <!-- Navbar Search-->
@@ -450,7 +435,7 @@ function changeCategoryClass(el) {
     }
 }
 </script>
-            <!--map 구현 끝!-->
+<!--map 구현 끝!-->
 
             <!--modal 구현-->
             <div class="modal">
@@ -459,10 +444,9 @@ function changeCategoryClass(el) {
                     <h5 class="modal-header " style="font-weight:bold">음식게시판</h5>
                     <!--modal content-->
                     <form>
-                        <div class="form-row">
-                            <div class="col-auto my-1">
-                                <label for="inlineFormCustomSelect">First name</label>
-                                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                        <form class="form-inline">
+                         <label class="my-1 mr-2" for="inlineFormCustomSelectPref">음식유형</label>
+                                <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
                                     <option selected>음식유형을 선택해주세요!</option>
                                     <option value="1">한식</option>
                                     <option value="2">중식</option>
@@ -472,42 +456,32 @@ function changeCategoryClass(el) {
                                     <option value="6">디저트</option>
                                     <option value="7">야식</option>
                                 </select>
+                        </form>
+                        <div class="form-row">
+                            <div class="col-md-15 mb-4">
+                                <label style="font-weight:bold" for="validationDefault01">가게이름</label>
+                                <input type="text" class="form-control" id="validationDefault01" placeholder="가게이름을 입력해주세요."  required>
+                            </div>
+                            <div class="col-md-15 mb-4">
+                                <label style="font-weight:bold" for="validationDefault02">메뉴이름</label>
+                                <input type="text" class="form-control" id="validationDefault02" placeholder="메뉴이름을 입력해주세요."  required>
+                            </div>
+                            <div class="col-md-15 mb-4">
+                                <label style="font-weight:bold" for="validationDefault03">현재금액</label>
+                                <input type="text" class="form-control" id="validationDefault03" placeholder="현재금액을 입력해주세요."  required>
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="col-md-4 mb-3">
-                                <label for="validationDefault01">First name</label>
-                                <input type="text" class="form-control" id="validationDefault01" placeholder="First name" value="Mark" required>
+                            <div class="col-md-15 mb-4">
+                                <label style="font-weight:bold" for="validationDefault04">최소주문금액</label>
+                                <input type="text" class="form-control" id="validationDefault04" placeholder="최소주문금액을 입력해주세요." required>
                             </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="validationDefault02">Last name</label>
-                                <input type="text" class="form-control" id="validationDefault02" placeholder="Last name" value="Otto" required>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="validationDefaultUsername">Username</label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroupPrepend2">@</span>
-                                    </div>
-                                    <input type="text" class="form-control" id="validationDefaultUsername" placeholder="Username" aria-describedby="inputGroupPrepend2" required>
-                                </div>
+                            <div class="col-md-15 mb-4">
+                                <label style="font-weight:bold" for="validationDefault05">배달료</label>
+                                <input type="text" class="form-control" id="validationDefault05" placeholder="배달료을 입력해주세요." required>
                             </div>
                         </div>
-                        <div class="form-row">
-                            <div class="col-md-6 mb-3">
-                                <label for="validationDefault03">City</label>
-                                <input type="text" class="form-control" id="validationDefault03" placeholder="City" required>
-                            </div>
-                            <div class="col-md-3 mb-3">
-                                <label for="validationDefault04">State</label>
-                                <input type="text" class="form-control" id="validationDefault04" placeholder="State" required>
-                            </div>
-                            <div class="col-md-3 mb-3">
-                                <label for="validationDefault05">Zip</label>
-                                <input type="text" class="form-control" id="validationDefault05" placeholder="Zip" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
+                        <div class="form-group mb-2">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
                                 <label class="form-check-label" for="invalidCheck2">
@@ -522,31 +496,29 @@ function changeCategoryClass(el) {
             <button class="btn-open-popup">Modal 띄우기</button>
 
             <script>
-      const body = document.querySelector('body');
-      const modal = document.querySelector('.modal');
-      const btnOpenPopup = document.querySelector('.btn-open-popup');
+          const body = document.querySelector('body');
+          const modal = document.querySelector('.modal');
+          const btnOpenPopup = document.querySelector('.btn-open-popup');
 
-      btnOpenPopup.addEventListener('click', () => {
-        modal.classList.toggle('show');
+          btnOpenPopup.addEventListener('click', () => {
+            modal.classList.toggle('show');
 
-        if (modal.classList.contains('show')) {
-          body.style.overflow = 'hidden';
-        }
-      });
+            if (modal.classList.contains('show')) {
+              body.style.overflow = 'hidden';
+            }
+          });
 
-      modal.addEventListener('click', (event) => {
-        if (event.target === modal) {
-          modal.classList.toggle('show');
+          modal.addEventListener('click', (event) => {
+            if (event.target === modal) {
+              modal.classList.toggle('show');
 
-          if (!modal.classList.contains('show')) {
-            body.style.overflow = 'auto';
-          }
-        }
-      });
-    </script>
-
+              if (!modal.classList.contains('show')) {
+                body.style.overflow = 'auto';
+              }
+            }
+          });
+        </script>
             <!--modal 구현 끝!-->
-
         </main>
 
         <!--homepage footer-->
