@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Dashboard - SB Admin</title>
+    <title>IdeaBANK Home</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="/css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
@@ -64,6 +64,7 @@
 
     <!--modal css-->
     <style>
+
      .modal {
         z-index: 1;
         position: absolute;
@@ -99,12 +100,19 @@
 
       transform: translateX(-50%) translateY(-50%);
     }
+
+    .btn-close {
+        position: absolute;
+        top: 20px;
+        right: 10px;
+    }
+
+
 </style>
 <!--modal css 끝!-->
-
-
-
 </head>
+
+
 <body class="sb-nav-fixed">
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
     <!-- Navbar Brand-->
@@ -140,13 +148,13 @@
                     <div class="sb-sidenav-menu-heading">Interface</div>
                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                         <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                        Layouts
+                        게시판
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
                     <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="layout-static.html">Static Navigation</a>
-                            <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
+                            <a class="nav-link" href="board">게시글 목록</a>
+                            <a class="nav-link" href="post">게시글 작성</a>
                         </nav>
                     </div>
                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
@@ -201,39 +209,39 @@
     <!--homepage content-->
     <div id="layoutSidenav_content">
 
-<main>
-<!--modal 구현-->
+        <main>
+            <!--modal 구현-->
             <div class="modal">
                 <div class="modal_body">
                     <!--modal header-->
                     <h5 class="modal-header " style="font-weight:bold">음식게시판</h5>
                     <!--modal content-->
-                    <form>
-                        <form class="form-inline">
-                            <label class="my-1 mr-2" for="inlineFormCustomSelectPref">음식유형</label>
-                            <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-                                <option selected>음식유형을 선택해주세요!</option>
-                                <option value="1">한식</option>
-                                <option value="2">중식</option>
-                                <option value="3">일식</option>
-                                <option value="4">양식</option>
-                                <option value="5">카페</option>
-                                <option value="6">디저트</option>
-                                <option value="7">야식</option>
-                            </select>
-                        </form>
-                        <div class="form-row">
+                    <div class="col-md-15 mb-4">
+                        <label style="font-weight:bold" for="validationDefault01">음식유형</label>
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>음식유형을 선택해주세요.</option>
+                            <option value="1">한식</option>
+                            <option value="2">중식</option>
+                            <option value="3">일식</option>
+                            <option value="4">양식</option>
+                            <option value="5">카페</option>
+                            <option value="6">디저트</option>
+                            <option value="7">야식</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
                             <div class="col-md-15 mb-4">
                                 <label style="font-weight:bold" for="validationDefault01">가게이름</label>
-                                <input type="text" class="form-control" id="validationDefault01" placeholder="가게이름을 입력해주세요."  required>
+                                <input type="text" class="form-control" id="validationDefault01" placeholder="가게이름을 입력해주세요." required>
                             </div>
                             <div class="col-md-15 mb-4">
                                 <label style="font-weight:bold" for="validationDefault02">메뉴이름</label>
-                                <input type="text" class="form-control" id="validationDefault02" placeholder="메뉴이름을 입력해주세요."  required>
+                                <input type="text" class="form-control" id="validationDefault02" placeholder="메뉴이름을 입력해주세요." required>
                             </div>
                             <div class="col-md-15 mb-4">
                                 <label style="font-weight:bold" for="validationDefault03">현재금액</label>
-                                <input type="text" class="form-control" id="validationDefault03" placeholder="현재금액을 입력해주세요."  required>
+                                <input type="text" class="form-control" id="validationDefault03" placeholder="현재금액을 입력해주세요." required>
                             </div>
                         </div>
                         <div class="form-row">
@@ -254,35 +262,27 @@
                                 </label>
                             </div>
                         </div>
-                        <button class="btn btn-primary" type="submit">채팅하기</button>
+                        <button class="btn btn-primary" type="submit">작성완료</button>
+                        <button type="button" class="btn-close" aria-label="Close"></button>
                     </form>
                 </div>
             </div>
+        <script>
+      const body = document.querySelector('body');
+      const modal = document.querySelector('.modal');
+      const btnOpenPopup = document.querySelector('.btn-open-popup');
 
-            <script>
-          const body = document.querySelector('body');
-          const modal = document.querySelector('.modal');
-          const btnOpenPopup = document.querySelector('.btn-open-popup');
+      btnOpenPopup.addEventListener('click', () => {
+        modal.classList.toggle('show');
 
-          btnOpenPopup.addEventListener('click', () => {
-            modal.classList.toggle('show');
+        if (modal.classList.contains('show')) {
+          body.style.overflow = 'hidden';
+        }
+      });
 
-            if (modal.classList.contains('show')) {
-              body.style.overflow = 'hidden';
-            }
-          });
 
-          modal.addEventListener('click', (event) => {
-            if (event.target === modal) {
-              modal.classList.toggle('show');
 
-              if (!modal.classList.contains('show')) {
-                body.style.overflow = 'auto';
-              }
-            }
-          });
-
-    </script>
+</script>
 <!--modal 구현 끝!-->
 
 
@@ -466,11 +466,13 @@ function displayPlaceInfo (place) {
     placeOverlay.setPosition(new kakao.maps.LatLng(place.y, place.x));
     placeOverlay.setMap(map);
 
+
             modal.classList.toggle('show');
 
             if (modal.classList.contains('show')) {
               body.style.overflow = 'hidden';
             }
+
 }
 
 
