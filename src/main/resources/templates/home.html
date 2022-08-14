@@ -114,9 +114,82 @@
 
 
 <body class="sb-nav-fixed">
+<!--modal 구현-->
+<div class="modal">
+    <div class="modal_body">
+        <!--modal header-->
+        <h5 class="modal-header " style="font-weight:bold">음식게시판</h5>
+        <!--modal content-->
+        <div class="col-md-15 mb-4">
+            <label style="font-weight:bold" for="validationDefault01">음식유형</label>
+            <select class="form-select" aria-label="Default select example">
+                <option selected>음식유형을 선택해주세요.</option>
+                <option value="1">한식</option>
+                <option value="2">중식</option>
+                <option value="3">일식</option>
+                <option value="4">양식</option>
+                <option value="5">카페</option>
+                <option value="6">디저트</option>
+                <option value="7">야식</option>
+            </select>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-15 mb-4">
+                <label style="font-weight:bold" for="validationDefault01">가게이름</label>
+                <input type="text" class="form-control" id="validationDefault01" placeholder="가게이름을 입력해주세요." required>
+            </div>
+            <div class="col-md-15 mb-4">
+                <label style="font-weight:bold" for="validationDefault02">메뉴이름</label>
+                <input type="text" class="form-control" id="validationDefault02" placeholder="메뉴이름을 입력해주세요." required>
+            </div>
+            <div class="col-md-15 mb-4">
+                <label style="font-weight:bold" for="validationDefault03">현재금액</label>
+                <input type="text" class="form-control" id="validationDefault03" placeholder="현재금액을 입력해주세요." required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-15 mb-4">
+                <label style="font-weight:bold" for="validationDefault04">최소주문금액</label>
+                <input type="text" class="form-control" id="validationDefault04" placeholder="최소주문금액을 입력해주세요." required>
+            </div>
+            <div class="col-md-15 mb-4">
+                <label style="font-weight:bold" for="validationDefault05">배달료</label>
+                <input type="text" class="form-control" id="validationDefault05" placeholder="배달료을 입력해주세요." required>
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
+                <label class="form-check-label" for="invalidCheck2">
+                    Agree to terms and conditions
+                </label>
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit">작성완료</button>
+        <button type="button" class="btn-close" aria-label="Close"></button>
+        </form>
+    </div>
+</div>
+<script>
+      const body = document.querySelector('body');
+      const modal = document.querySelector('.modal');
+      const btnOpenPopup = document.querySelector('.btn-open-popup');
+
+      btnOpenPopup.addEventListener('click', () => {
+        modal.classList.toggle('show');
+
+        if (modal.classList.contains('show')) {
+          body.style.overflow = 'hidden';
+        }
+      });
+
+    </script>
+<!--modal 구현 끝!-->
+
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
     <!-- Navbar Brand-->
-    <a class="navbar-brand ps-3" href="/home.html">ideaBANK</a>
+    <a class="navbar-brand ps-3" href="/">EAT TWO GETTER</a>
     <!-- Sidebar Toggle-->
     <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
     <!-- Navbar Search-->
@@ -143,60 +216,53 @@
                     <div class="sb-sidenav-menu-heading">Core</div>
                     <a class="nav-link" href="home.html">
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                        Dashboard
+                        첫번째 칸
                     </a>
-                    <div class="sb-sidenav-menu-heading">Interface</div>
+                    <div class="sb-sidenav-menu-heading">Board</div>
                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                         <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                        게시판
+                        게시글
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
                     <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="board">게시글 목록</a>
                             <a class="nav-link" href="post">게시글 작성</a>
+                            <a class="nav-link" href="board">게시글 목록</a>
                         </nav>
                     </div>
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts2" aria-expanded="false" aria-controls="collapseLayouts2">
+                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        채팅목록
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="collapseLayouts2" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" href="/chat">채팅방1</a>
+                            <a class="nav-link" href="/chat">채팅방2</a>
+                        </nav>
+                    </div>
+
+                    <div class="sb-sidenav-menu-heading">Addons</div>
+                    <a class="nav-link" href="charts.html">
+                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                        주소검색
+                    </a>
+
                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                         <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                        Pages
+                        내정보
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
                     <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                Authentication
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="login.html">Login</a>
-                                    <a class="nav-link" href="register.html">Register</a>
-                                    <a class="nav-link" href="password.html">Forgot Password</a>
+                                    <a class="nav-link" href="/login">Login</a>
+                                    <a class="nav-link" href="/register">Register</a>
+                                    <a class="nav-link" href="/password">Forgot Password</a>
                                 </nav>
-                            </div>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
-                                Error
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="401.html">401 Page</a>
-                                    <a class="nav-link" href="404.html">404 Page</a>
-                                    <a class="nav-link" href="500.html">500 Page</a>
-                                </nav>
-                            </div>
                         </nav>
                     </div>
-                    <div class="sb-sidenav-menu-heading">Addons</div>
-                    <a class="nav-link" href="charts.html">
-                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                        Charts
-                    </a>
-                    <a class="nav-link" href="tables.html">
-                        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                        Tables
-                    </a>
                 </div>
             </div>
             <div class="sb-sidenav-footer">
@@ -206,113 +272,41 @@
         </nav>
     </div>
 
+
     <!--homepage content-->
     <div id="layoutSidenav_content">
-
         <main>
-            <!--modal 구현-->
-            <div class="modal">
-                <div class="modal_body">
-                    <!--modal header-->
-                    <h5 class="modal-header " style="font-weight:bold">음식게시판</h5>
-                    <!--modal content-->
-                    <div class="col-md-15 mb-4">
-                        <label style="font-weight:bold" for="validationDefault01">음식유형</label>
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>음식유형을 선택해주세요.</option>
-                            <option value="1">한식</option>
-                            <option value="2">중식</option>
-                            <option value="3">일식</option>
-                            <option value="4">양식</option>
-                            <option value="5">카페</option>
-                            <option value="6">디저트</option>
-                            <option value="7">야식</option>
-                        </select>
-                    </div>
-
-                    <div class="form-row">
-                            <div class="col-md-15 mb-4">
-                                <label style="font-weight:bold" for="validationDefault01">가게이름</label>
-                                <input type="text" class="form-control" id="validationDefault01" placeholder="가게이름을 입력해주세요." required>
-                            </div>
-                            <div class="col-md-15 mb-4">
-                                <label style="font-weight:bold" for="validationDefault02">메뉴이름</label>
-                                <input type="text" class="form-control" id="validationDefault02" placeholder="메뉴이름을 입력해주세요." required>
-                            </div>
-                            <div class="col-md-15 mb-4">
-                                <label style="font-weight:bold" for="validationDefault03">현재금액</label>
-                                <input type="text" class="form-control" id="validationDefault03" placeholder="현재금액을 입력해주세요." required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="col-md-15 mb-4">
-                                <label style="font-weight:bold" for="validationDefault04">최소주문금액</label>
-                                <input type="text" class="form-control" id="validationDefault04" placeholder="최소주문금액을 입력해주세요." required>
-                            </div>
-                            <div class="col-md-15 mb-4">
-                                <label style="font-weight:bold" for="validationDefault05">배달료</label>
-                                <input type="text" class="form-control" id="validationDefault05" placeholder="배달료을 입력해주세요." required>
-                            </div>
-                        </div>
-                        <div class="form-group mb-2">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
-                                <label class="form-check-label" for="invalidCheck2">
-                                    Agree to terms and conditions
-                                </label>
-                            </div>
-                        </div>
-                        <button class="btn btn-primary" type="submit">작성완료</button>
-                        <button type="button" class="btn-close" aria-label="Close"></button>
-                    </form>
-                </div>
-            </div>
-        <script>
-      const body = document.querySelector('body');
-      const modal = document.querySelector('.modal');
-      const btnOpenPopup = document.querySelector('.btn-open-popup');
-
-      btnOpenPopup.addEventListener('click', () => {
-        modal.classList.toggle('show');
-
-        if (modal.classList.contains('show')) {
-          body.style.overflow = 'hidden';
-        }
-      });
-
-
-
-</script>
-<!--modal 구현 끝!-->
-
-
 <!--map 구현!-->
             <div class="map_wrap">
                 <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
                 <ul id="category">
                     <li id="BK9" data-order="0">
                         <span class="category_bg bank"></span>
-                        은행
+                        한식
                     </li>
                     <li id="MT1" data-order="1">
                         <span class="category_bg mart"></span>
-                        마트
+                        중식
                     </li>
                     <li id="PM9" data-order="2">
                         <span class="category_bg pharmacy"></span>
-                        약국
+                        일식
                     </li>
                     <li id="OL7" data-order="3">
                         <span class="category_bg oil"></span>
-                        주유소
+                        양식
                     </li>
                     <li id="CE7" data-order="4">
                         <span class="category_bg cafe"></span>
                         카페
                     </li>
-                    <li id="CS2" data-order="5">
+                    <li id="CE8" data-order="5">
+                        <span class="category_bg cafe"></span>
+                        야식
+                    </li>
+                    <li id="CS2" data-order="6">
                         <span class="category_bg store"></span>
-                        편의점
+                        기타
                     </li>
                 </ul>
             </div>
@@ -536,7 +530,7 @@ map.addControl(zoomControl, kakao.maps.ControlPosition.BOTTOMRIGHT);
 <!--map 구현 끝!-->
 </main>
 
-        <!--homepage footer-->
+<!--homepage footer-->
         <footer class="py-4 bg-light mt-auto">
             <div class="container-fluid px-4">
                 <div class="d-flex align-items-center justify-content-between small">

@@ -39,7 +39,7 @@ public class BoardController {
     @PostMapping("/post")
     public String write(BoardDto boardDto) {
         boardService.savePost(boardDto);
-        return "board/list.html";
+        return "redirect:/board";
     }
 
     //각 게시글을 클릭하면, /post/{id}으로 Get 요청을 합니다. (만약 1번 글을 클릭하면 /post/1로 접속됩니다.)
@@ -64,7 +64,7 @@ public class BoardController {
     @PutMapping("/post/edit/{id}")
     public String update(BoardDto boardDto) {
         boardService.savePost(boardDto);
-        return "redirect:board/list.html";
+        return "redirect:/board";
     }
 
 
