@@ -1,9 +1,9 @@
 //Controller와 Service 사이에서 데이터를 주고받는 DTO(Data Access Object)를 구현합니다.
 
-package com.example.ideaBANK.demo.dto;
+package com.example.ideaBANK.Board.dto;
 
 
-import com.example.ideaBANK.demo.domain.entity.Board;
+import com.example.ideaBANK.Board.domain.entity.Board;
 import lombok.*;
 
 import java.time.LocalDateTime;

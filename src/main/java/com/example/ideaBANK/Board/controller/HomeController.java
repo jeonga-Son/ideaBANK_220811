@@ -1,14 +1,14 @@
-package com.example.ideaBANK.demo.controller;
+package com.example.ideaBANK.Board.controller;
 
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class LogInController {
+public class HomeController {
 
-    @GetMapping("/login")
+    @GetMapping("/")
     public String showHome() {
-        return "login";
+        return "home";
     }
 }

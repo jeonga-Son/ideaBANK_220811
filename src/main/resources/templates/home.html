@@ -101,12 +101,10 @@
       transform: translateX(-50%) translateY(-50%);
     }
 
-    .btn-close {
-        position: absolute;
-        top: 20px;
-        right: 10px;
+    .close {
+        top : 10px
+        right : 10px
     }
-
 
 </style>
 <!--modal css 끝!-->
@@ -120,71 +118,20 @@
         <!--modal header-->
         <h5 class="modal-header " style="font-weight:bold">음식게시판</h5>
         <!--modal content-->
-        <div class="col-md-15 mb-4">
-            <label style="font-weight:bold" for="validationDefault01">음식유형</label>
-            <select class="form-select" aria-label="Default select example">
-                <option selected>음식유형을 선택해주세요.</option>
-                <option value="1">한식</option>
-                <option value="2">중식</option>
-                <option value="3">일식</option>
-                <option value="4">양식</option>
-                <option value="5">카페</option>
-                <option value="6">디저트</option>
-                <option value="7">야식</option>
-            </select>
-        </div>
-
-        <div class="form-row">
-            <div class="col-md-15 mb-4">
-                <label style="font-weight:bold" for="validationDefault01">가게이름</label>
-                <input type="text" class="form-control" id="validationDefault01" placeholder="가게이름을 입력해주세요." required>
-            </div>
-            <div class="col-md-15 mb-4">
-                <label style="font-weight:bold" for="validationDefault02">메뉴이름</label>
-                <input type="text" class="form-control" id="validationDefault02" placeholder="메뉴이름을 입력해주세요." required>
-            </div>
-            <div class="col-md-15 mb-4">
-                <label style="font-weight:bold" for="validationDefault03">현재금액</label>
-                <input type="text" class="form-control" id="validationDefault03" placeholder="현재금액을 입력해주세요." required>
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="col-md-15 mb-4">
-                <label style="font-weight:bold" for="validationDefault04">최소주문금액</label>
-                <input type="text" class="form-control" id="validationDefault04" placeholder="최소주문금액을 입력해주세요." required>
-            </div>
-            <div class="col-md-15 mb-4">
-                <label style="font-weight:bold" for="validationDefault05">배달료</label>
-                <input type="text" class="form-control" id="validationDefault05" placeholder="배달료을 입력해주세요." required>
-            </div>
-        </div>
-        <div class="form-group mb-2">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
-                <label class="form-check-label" for="invalidCheck2">
-                    Agree to terms and conditions
-                </label>
-            </div>
-        </div>
-        <button class="btn btn-primary" type="submit">작성완료</button>
-        <button type="button" class="btn-close" aria-label="Close"></button>
-        </form>
+        <button type="button" class="modal_Close" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
     </div>
-</div>
-<script>
-      const body = document.querySelector('body');
+    <script>
       const modal = document.querySelector('.modal');
-      const btnOpenPopup = document.querySelector('.btn-open-popup');
+      const btnClosePopup = document.querySelector('.modal_Close')
 
-      btnOpenPopup.addEventListener('click', () => {
-        modal.classList.toggle('show');
-
-        if (modal.classList.contains('show')) {
-          body.style.overflow = 'hidden';
-        }
+      btnClosePopup.addEvent('click', () => {
+        modal.style.display = 'none';
       });
 
     </script>
+</div>
 <!--modal 구현 끝!-->
 
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -394,8 +341,6 @@ function displayPlaces(places) {
     // 이 순서는 스프라이트 이미지에서의 위치를 계산하는데 사용됩니다
     var order = document.getElementById(currCategory).getAttribute('data-order');
 
-
-
     for ( var i=0; i<places.length; i++ ) {
 
             // 마커를 생성하고 지도에 표시합니다
@@ -460,12 +405,12 @@ function displayPlaceInfo (place) {
     placeOverlay.setPosition(new kakao.maps.LatLng(place.y, place.x));
     placeOverlay.setMap(map);
 
+//맵 위에 모달 띄우기
+    modal.classList.toggle('show');
 
-            modal.classList.toggle('show');
-
-            if (modal.classList.contains('show')) {
-              body.style.overflow = 'hidden';
-            }
+    if (modal.classList.contains('show')) {
+      body.style.overflow = 'hidden';
+    }
 
 }
 

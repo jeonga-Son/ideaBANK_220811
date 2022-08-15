@@ -1,6 +1,6 @@
 //Entity는 데이터베이스 테이블과 매핑되는 객체입니다.
 
-package com.example.ideaBANK.demo.domain.entity;
+package com.example.ideaBANK.Board.domain.entity;
 
 
 import lombok.Builder;

@@ -1,11 +1,11 @@
 //글쓰기 Form에서 내용을 입력한 뒤, '글쓰기' 버튼을 누르면 Post 형식으로 요청이 오고,
 //BoardService의 savePost()를 실행하게 됩니다.
-package com.example.ideaBANK.demo.service;
+package com.example.ideaBANK.Board.service;
 
 
-import com.example.ideaBANK.demo.domain.entity.Board;
-import com.example.ideaBANK.demo.domain.repository.BoardRepository;
-import com.example.ideaBANK.demo.dto.BoardDto;
+import com.example.ideaBANK.Board.domain.entity.Board;
+import com.example.ideaBANK.Board.domain.repository.BoardRepository;
+import com.example.ideaBANK.Board.dto.BoardDto;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
