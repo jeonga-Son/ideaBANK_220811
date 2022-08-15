@@ -1,12 +1,11 @@
 //글쓰기 Form에서 받은 데이터는 '글쓰기' 버튼을 누르면 /post로 Post 요청을 하게 됩니다.
 //BoardController에 Post로 받은 데이터를 데이터베이스에 추가하는 것을 추가해 줍니다.
 
-package com.example.ideaBANK.demo.controller;
+package com.example.ideaBANK.Board.controller;
 
 
-import com.example.ideaBANK.demo.dto.BoardDto;
-import com.example.ideaBANK.demo.service.BoardService;
-import lombok.Getter;
+import com.example.ideaBANK.Board.dto.BoardDto;
+import com.example.ideaBANK.Board.service.BoardService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -61,7 +60,7 @@ public class BoardController {
         return "redirect:/board";
     }
 
-    @DeleteMapping("/post/{id}")
+    @DeleteMapping("/deleteBoard/{id}")
     public String delete(@PathVariable("id") Long id) {
         boardService.deletePost(id);
         return "redirect:/board";
